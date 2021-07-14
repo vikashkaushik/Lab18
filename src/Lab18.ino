@@ -25,6 +25,7 @@ void setup() {
 }
 void callback(char* topic, byte* payload, unsigned int length)
 {
+  //checks which topic and sets lat an long accordingly, getting the value from mqtt
   char p[length + 1];
   memcpy(p, payload, length);
   p[length] = NULL;
@@ -65,6 +66,7 @@ void loop() {
     client.subscribe("noderedlong");
     
   } 
+  // displays the lat and long on oled and then on blynk shows it on the map
   display.loop();
   Blynk.run();
   display.clearDisplay();
